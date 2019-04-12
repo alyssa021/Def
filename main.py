@@ -10,7 +10,12 @@ url = 'https://od-api.oxforddictionaries.com:443/api/v1/entries/' + language + '
 
 r = requests.get(url, headers = {'app_id': app_id, 'app_key': app_key})
 
-r_json = r.json();
+try:
+    r_json = r.json();
+except:
+    print("Please update your credentials in config.py");
+    exit();
+
 contents = r_json["results"];
 
 for content in contents:
